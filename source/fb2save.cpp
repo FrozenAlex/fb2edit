@@ -65,6 +65,7 @@ void FbSaveDialog::init()
     }
 
     setAcceptMode(AcceptSave);
+    setOption(QFileDialog::DontUseNativeDialog, true);
     setOption(DontConfirmOverwrite, false);
     setDefaultSuffix("fb2");
 
@@ -83,8 +84,12 @@ void FbSaveDialog::init()
     label->setText(tr("&Encoding"));
     label->setBuddy(combo);
 
-    layout()->addWidget(label);
-    layout()->addWidget(combo);
+    QGridLayout *grid = (QGridLayout*)this->layout();
+    if (!grid) return;
+
+    int row = grid->rowCount();
+    grid->addWidget(label, row, 0);
+    grid->addWidget(combo, row, 1);
 }
 
 QString FbSaveDialog::fileName() const
