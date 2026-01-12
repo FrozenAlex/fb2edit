@@ -23,7 +23,7 @@
 #include <QWebPage>
 #include <QtDebug>
 
-#define XMLAutoFormatting
+//#define XMLAutoFormatting
 //#define ImgTypePrint
 
 //---------------------------------------------------------------------------
