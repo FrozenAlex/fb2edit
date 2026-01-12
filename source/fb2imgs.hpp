@@ -108,7 +108,8 @@ class FbImageReply : public QNetworkReply
     Q_OBJECT
 public:
     explicit FbImageReply(QNetworkAccessManager::Operation op, const QNetworkRequest &request, const QByteArray &data);
-    qint64 bytesAvailable() const { return content.size(); }
+    qint64 bytesAvailable() const { return (content.size() - offset)
+                                           + QNetworkReply::bytesAvailable(); }
     bool isSequential() const { return true; }
     void abort() { close(); }
 
